@@ -1,0 +1,31 @@
+<header>
+  {{input id='new-todo' type='text' valueBinding='task' action='createTodo' placeholder='What do you need to do?'}}
+</header>
+{{#if length}}
+  <section id="todo-list">
+    <ul>
+      {{#each todo in content}}
+        <li>
+          <div class="completed">
+            <!--class="complete fa fa-check" -->
+            <button {{bind-attr class=':complete :fa :fa-check todo.isCompleted:done:'}} {{action 'completeTodo' todo}}></button>
+          </div>
+          <div {{bind-attr class=':task todo.isCompleted:done:'}}>
+            {{todo.task}}
+          </div>
+          <div class="actions">
+            <button class="remove fa fa-times" type="button" class="remove" {{action 'removeTodo' todo}}></button>
+          </div>
+        </li>
+      {{/each}}
+    </ul>
+  </section>
+  <footer id="todo-list-footer">
+    <span class="view-complete"><button type="button" {{action 'showComplete'}}>Show complete</button></span>
+    <span class="view-incomplete"><button type="button" {{action 'showIncomplete'}}>Show incomplete</button></span>
+    <span class="clear"><button type="reset" {{action 'clear'}}>Clear complete</button></span>
+    <span class="count"><strong>Tasks:</strong> {{ content.length }}</span>
+    <span class="incomplete-tasks"><strong>Remaining:</strong> {{ incompleteTasks }}</span>
+    <span class="completed"><strong>Done:</strong> {{ completedTasks }}</span>
+  </footer>
+{{/if}}
