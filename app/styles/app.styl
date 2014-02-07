@@ -123,7 +123,6 @@ nav {
   }
   .clear {
     column(2)
-    offset(2)
     button {
       border none
       background-color transparent
@@ -133,13 +132,15 @@ nav {
       text-transform inherit
     }
   }
-  .view-complete, .view-incomplete {
+  .view-complete, .view-incomplete, .view-all {
     column(2)
-    button {
-      background transparent
+    text-align left
+    cursor pointer
+    &.active {
+      text-decoration none
+      font-weight 900
       border none
     }
-    text-align left
   }
   .count {
     column(1)

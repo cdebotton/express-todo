@@ -3,9 +3,6 @@ App.Router.reopen({
 });
 
 App.Router.map(function() {
-  this.resource('todos', function() {
-    this.route('create');
-    this.resource('todo', { path: ':todo_id' });
-  });
+  this.resource('todos');
   this.route('about');
 });

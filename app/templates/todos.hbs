@@ -4,10 +4,9 @@
 {{#if length}}
   <section id="todo-list">
     <ul>
-      {{#each todo in content}}
+      {{#each todo in filteredTasks}}
         <li>
           <div class="completed">
-            <!--class="complete fa fa-check" -->
             <button {{bind-attr class=':complete :fa :fa-check todo.isCompleted:done:'}} {{action 'completeTodo' todo}}></button>
           </div>
           <div {{bind-attr class=':task todo.isCompleted:done:'}}>
@@ -21,8 +20,9 @@
     </ul>
   </section>
   <footer id="todo-list-footer">
-    <span class="view-complete"><button type="button" {{action 'showComplete'}}>Show complete</button></span>
-    <span class="view-incomplete"><button type="button" {{action 'showIncomplete'}}>Show incomplete</button></span>
+    <span class="view-all" {{action 'showAll'}}>All</span>
+    <span class="view-complete" {{action 'showComplete'}}>Complete</span>
+    <span class="view-incomplete" {{action 'showIncomplete'}}>Complete</span>
     <span class="clear"><button type="reset" {{action 'clear'}}>Clear complete</button></span>
     <span class="count"><strong>Tasks:</strong> {{ content.length }}</span>
     <span class="incomplete-tasks"><strong>Remaining:</strong> {{ incompleteTasks }}</span>

@@ -5,6 +5,8 @@ module.exports = App.TodosController = Ember.ArrayController.extend({
 
   content: [],
 
+  filteredComplete: null,
+
   completedTasks: function() {
     return this.filterBy('isCompleted', true).length;
   }.property('content.@each.isCompleted'),
@@ -12,6 +14,13 @@ module.exports = App.TodosController = Ember.ArrayController.extend({
   incompleteTasks: function() {
     return this.filterBy('isCompleted', false).length;
   }.property('content.@each.isCompleted'),
+
+  filteredTasks: function() {
+    if (this.get('filteredComplete') !== null) {
+      return this.get('content').filterBy('isCompleted', this.get('filteredComplete'));
+    }
+    return this.get('content');
+  }.property('content.@each.isCompleted', 'filteredComplete'),
 
   actions: {
     createTodo: function() {
@@ -33,11 +42,15 @@ module.exports = App.TodosController = Ember.ArrayController.extend({
     },
 
     showComplete: function() {
-
+      this.set('filteredComplete', true);
     },
 
     showIncomplete: function() {
+      this.set('filteredComplete', false);
+    },
 
+    showAll: function() {
+      this.set('filteredComplete', null);
     },
 
     clear: function() {
