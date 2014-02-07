@@ -6,5 +6,5 @@ A demo app that uses express, mongodb, and brunch to create a simple minimalisti
 ### Dependencies
 - [bower](http://bower.io/)
 - [brunch.io](http://brunch.io)
-- [nodejs](http://nodejs.org)
+- [nodejs & npm](http://nodejs.org)
 - [mongodb](http://www.mongodb.org/)
